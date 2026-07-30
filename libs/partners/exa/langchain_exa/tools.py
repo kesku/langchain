@@ -341,8 +341,8 @@ class ExaAgentInput(BaseModel):
     effort: Literal["low", "medium", "high", "xhigh", "auto"] | None = None
     previous_run_id: str | None = None
     data_sources: list[dict[str, Any]] | None = None
-    timeout_ms: int = Field(default=3600000, ge=1)
-    poll_interval: int = Field(default=1000, ge=1)
+    timeout_ms: int = Field(default=3600000, ge=1, le=3600000)
+    poll_interval: int = Field(default=1000, ge=500, le=60000)
 
 
 def _to_dict(value: Any) -> Any:
